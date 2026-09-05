@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JEE Buddy</title>
+    <title>JEE Buddy - Practice</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -16,62 +16,29 @@
 
 <nav id="menu">
     <a href="#home">Home</a>
-    <a href="#doubt">Ask Doubt</a>
     <a href="#practice">Practice</a>
-    <a href="#planner">Study Planner</a>
+    <a href="#planner">Planner</a>
+    <a href="#doubt">Ask Doubt</a>
 </nav>
 
 <main>
 
 <section id="home" class="hero">
-    <p class="badge">JEE PREPARATION MADE SIMPLE</p>
 
-    <h1>Your Personal<br><span>JEE Tutor</span></h1>
+    <div class="badge">JEE PREPARATION PLATFORM</div>
 
-    <p class="subtitle">
-        Ask questions, practice concepts and build a smarter JEE study routine.
+    <h1>Prepare Smarter.<br>
+        <span>Score Better.</span>
+    </h1>
+
+    <p>
+        Practice JEE questions, track your performance and improve
+        your weak concepts.
     </p>
 
-    <a href="#doubt" class="primary-btn">Ask a Doubt →</a>
-</section>
-
-
-<section id="doubt" class="section">
-
-    <div class="section-title">
-        <p class="small-title">AI TUTOR</p>
-        <h2>Ask Your Doubt</h2>
-        <p>Enter any Physics, Chemistry or Maths question.</p>
-    </div>
-
-    <div class="doubt-card">
-
-        <div class="subjects">
-            <button class="subject active" onclick="selectSubject(this)">
-                Physics
-            </button>
-
-            <button class="subject" onclick="selectSubject(this)">
-                Chemistry
-            </button>
-
-            <button class="subject" onclick="selectSubject(this)">
-                Maths
-            </button>
-        </div>
-
-        <textarea
-            id="question"
-            placeholder="Example: Find the maximum height of a projectile..."
-        ></textarea>
-
-        <button class="solve-btn" onclick="solveQuestion()">
-            Solve Question
-        </button>
-
-        <div id="answer" class="answer"></div>
-
-    </div>
+    <a href="#practice" class="primary-btn">
+        Start Practice →
+    </a>
 
 </section>
 
@@ -79,70 +46,169 @@
 <section id="practice" class="section">
 
     <div class="section-title">
-        <p class="small-title">PRACTICE</p>
-        <h2>Improve Your Concepts</h2>
-        <p>Choose a subject and start practicing.</p>
+        <div class="small-title">PRACTICE</div>
+        <h2>JEE Practice Arena</h2>
+        <p>Choose your subject and start solving.</p>
     </div>
 
-    <div class="cards">
 
-        <div class="card">
-            <div class="icon">⚡</div>
-            <h3>Physics</h3>
-            <p>Mechanics, electricity, optics and more.</p>
-            <button onclick="startPractice('Physics')">
-                Start Practice
+    <div class="practice-box">
+
+        <label>Choose Subject</label>
+
+        <div class="selection-row">
+
+            <button class="choice active"
+                onclick="chooseSubject('Physics', this)">
+                ⚡ Physics
             </button>
+
+            <button class="choice"
+                onclick="chooseSubject('Chemistry', this)">
+                🧪 Chemistry
+            </button>
+
+            <button class="choice"
+                onclick="chooseSubject('Maths', this)">
+                📐 Maths
+            </button>
+
         </div>
 
-        <div class="card">
-            <div class="icon">🧪</div>
-            <h3>Chemistry</h3>
-            <p>Physical, organic and inorganic chemistry.</p>
-            <button onclick="startPractice('Chemistry')">
-                Start Practice
+
+        <label>Choose Difficulty</label>
+
+        <div class="selection-row">
+
+            <button class="difficulty active"
+                onclick="chooseDifficulty('Main', this)">
+                JEE Main
             </button>
+
+            <button class="difficulty"
+                onclick="chooseDifficulty('Advanced', this)">
+                JEE Advanced
+            </button>
+
         </div>
 
-        <div class="card">
-            <div class="icon">📐</div>
-            <h3>Mathematics</h3>
-            <p>Algebra, calculus, coordinate geometry and more.</p>
-            <button onclick="startPractice('Mathematics')">
-                Start Practice
-            </button>
+
+        <button class="start-btn" onclick="startQuiz()">
+            Start 5 Question Test 🚀
+        </button>
+
+    </div>
+
+
+    <div id="quiz" class="quiz-box">
+
+        <div class="quiz-top">
+
+            <span id="questionNumber">
+                Question 1 / 5
+            </span>
+
+            <span id="score">
+                Score: 0
+            </span>
+
         </div>
+
+
+        <div class="progress-container">
+            <div id="progress"></div>
+        </div>
+
+
+        <h3 id="questionText">
+            Question will appear here
+        </h3>
+
+
+        <div id="options"></div>
+
+
+        <div id="result"></div>
+
+
+        <button
+            id="nextButton"
+            class="next-btn"
+            onclick="nextQuestion()"
+            style="display:none;">
+            Next Question →
+        </button>
+
+    </div>
+
+
+    <div id="finalResult" class="final-result">
+
+        <h2>🎉 Test Completed!</h2>
+
+        <div id="finalScore"></div>
+
+        <button class="start-btn" onclick="startQuiz()">
+            Try Again
+        </button>
 
     </div>
 
 </section>
 
 
-<section id="planner" class="section planner">
+<section id="planner" class="section">
 
     <div class="section-title">
-        <p class="small-title">STUDY PLANNER</p>
-        <h2>Plan Your Day</h2>
-        <p>Create a simple study plan.</p>
+        <div class="small-title">STUDY PLANNER</div>
+        <h2>Plan Your Study</h2>
+        <p>Create a simple daily plan.</p>
     </div>
 
     <div class="planner-card">
 
-        <label>How many hours can you study?</label>
+        <label>Available study hours</label>
 
         <input
-            type="number"
             id="studyHours"
-            placeholder="Example: 8"
+            type="number"
             min="1"
             max="18"
-        >
+            placeholder="Example: 8">
 
-        <button class="solve-btn" onclick="createPlan()">
-            Create My Plan
+        <button class="start-btn"
+            onclick="createPlan()">
+            Create Plan
         </button>
 
         <div id="plan"></div>
+
+    </div>
+
+</section>
+
+
+<section id="doubt" class="section">
+
+    <div class="section-title">
+        <div class="small-title">DOUBT SOLVER</div>
+        <h2>Ask Your Doubt</h2>
+        <p>AI doubt solving will be added in a future version.</p>
+    </div>
+
+    <div class="doubt-box">
+
+        <textarea
+            id="questionInput"
+            placeholder="Type your JEE question here...">
+        </textarea>
+
+        <button class="start-btn"
+            onclick="submitDoubt()">
+            Submit Doubt
+        </button>
+
+        <div id="doubtResult"></div>
 
     </div>
 
@@ -152,9 +218,17 @@
 
 
 <footer>
-    <div class="logo">JEE<span>Buddy</span></div>
-    <p>Built for JEE aspirants 🚀</p>
+
+    <div class="logo">
+        JEE<span>Buddy</span>
+    </div>
+
+    <p>
+        Built for JEE aspirants 🚀
+    </p>
+
 </footer>
+
 
 <script src="script.js"></script>
 
