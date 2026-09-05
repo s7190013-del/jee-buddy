@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE Buddy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="logo">JEE<span>Buddy</span></div>
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+</header>
+
+<nav id="menu">
+    <a href="#home">Home</a>
+    <a href="#doubt">Ask Doubt</a>
+    <a href="#practice">Practice</a>
+    <a href="#planner">Study Planner</a>
+</nav>
+
+<main>
+
+<section id="home" class="hero">
+    <p class="badge">JEE PREPARATION MADE SIMPLE</p>
+
+    <h1>Your Personal<br><span>JEE Tutor</span></h1>
+
+    <p class="subtitle">
+        Ask questions, practice concepts and build a smarter JEE study routine.
+    </p>
+
+    <a href="#doubt" class="primary-btn">Ask a Doubt →</a>
+</section>
+
+
+<section id="doubt" class="section">
+
+    <div class="section-title">
+        <p class="small-title">AI TUTOR</p>
+        <h2>Ask Your Doubt</h2>
+        <p>Enter any Physics, Chemistry or Maths question.</p>
+    </div>
+
+    <div class="doubt-card">
+
+        <div class="subjects">
+            <button class="subject active" onclick="selectSubject(this)">
+                Physics
+            </button>
+
+            <button class="subject" onclick="selectSubject(this)">
+                Chemistry
+            </button>
+
+            <button class="subject" onclick="selectSubject(this)">
+                Maths
+            </button>
+        </div>
+
+        <textarea
+            id="question"
+            placeholder="Example: Find the maximum height of a projectile..."
+        ></textarea>
+
+        <button class="solve-btn" onclick="solveQuestion()">
+            Solve Question
+        </button>
+
+        <div id="answer" class="answer"></div>
+
+    </div>
+
+</section>
+
+
+<section id="practice" class="section">
+
+    <div class="section-title">
+        <p class="small-title">PRACTICE</p>
+        <h2>Improve Your Concepts</h2>
+        <p>Choose a subject and start practicing.</p>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="icon">⚡</div>
+            <h3>Physics</h3>
+            <p>Mechanics, electricity, optics and more.</p>
+            <button onclick="startPractice('Physics')">
+                Start Practice
+            </button>
+        </div>
+
+        <div class="card">
+            <div class="icon">🧪</div>
+            <h3>Chemistry</h3>
+            <p>Physical, organic and inorganic chemistry.</p>
+            <button onclick="startPractice('Chemistry')">
+                Start Practice
+            </button>
+        </div>
+
+        <div class="card">
+            <div class="icon">📐</div>
+            <h3>Mathematics</h3>
+            <p>Algebra, calculus, coordinate geometry and more.</p>
+            <button onclick="startPractice('Mathematics')">
+                Start Practice
+            </button>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="planner" class="section planner">
+
+    <div class="section-title">
+        <p class="small-title">STUDY PLANNER</p>
+        <h2>Plan Your Day</h2>
+        <p>Create a simple study plan.</p>
+    </div>
+
+    <div class="planner-card">
+
+        <label>How many hours can you study?</label>
+
+        <input
+            type="number"
+            id="studyHours"
+            placeholder="Example: 8"
+            min="1"
+            max="18"
+        >
+
+        <button class="solve-btn" onclick="createPlan()">
+            Create My Plan
+        </button>
+
+        <div id="plan"></div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<footer>
+    <div class="logo">JEE<span>Buddy</span></div>
+    <p>Built for JEE aspirants 🚀</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
